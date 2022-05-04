@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/settings_root_fragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15sp"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="@string/settings_label"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/delete_profile_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_above="@id/edit_profile_button"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@color/purple_100"
+        android:fontFamily="@font/ubuntu"
+        android:text="@string/delete_profile_image_label"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/edit_profile_button"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_above="@id/signout_profile_button"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@color/purple_100"
+        android:fontFamily="@font/ubuntu"
+        android:text="@string/edit_profile_label"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/signout_profile_button"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_above="@id/delete_profile_button"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@color/purple_100"
+        android:fontFamily="@font/ubuntu"
+        android:text="@string/sign_out_label"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/delete_profile_button"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@color/purple_100"
+        android:fontFamily="@font/ubuntu"
+        android:text="@string/delete_profile_label"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

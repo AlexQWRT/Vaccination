@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in_label">Войти</string>
+    <string name="register_label">Зарегистрироваться</string>
+    <string name="enter_email_label">Введите адрес электронной почты</string>
+    <string name="enter_password_label">Введите праоль</string>
+    <string name="enter_name_label">Введите имя</string>
+    <string name="sex_label">Пол:</string>
+    <string name="male_label">мужской</string>
+    <string name="female_label">женский</string>
+    <string name="enter_age_label">Введите возраст</string>
+    <string name="chronic_diseases_label">Хронические заболевания</string>
+    <string name="yes_label">есть</string>
+    <string name="no_label">нету</string>
+    <string name="bad_habits_label">Вредные привычки:</string>
+    <string name="self_protection_label">Использование СИЗов:</string>
+    <string name="sometimes_label">иногда</string>
+    <string name="vaccine_label">Вакцина:</string>
+    <string name="choosing_first_date_label">Дата первой вакцинации</string>
+    <string name="choose_date_label">Выберите дату</string>
+    <string name="choosing_second_date_label">Давтв второй вакцинации</string>
+    <string name="place_of_life_label">Место проживания:</string>
+    <string name="metropolis_label">крупный город</string>
+    <string name="city_label">город</string>
+    <string name="village_label">сельская местность</string>
+    <string name="confirm_password_label">Введитн пароль (подтверждение)</string>
+    <string name="submit_label">Подтвердить</string>
+    <string name="blocked_label">(заблокировано)</string>
+    <string name="failed_to_login_label">Ошибка входа</string>
+    <string name="age_label">Возраст:</string>
+    <string name="none_label">нету</string>
+    <string name="settings_label">Настройки</string>
+    <string name="first_date_label">Первая дата:</string>
+    <string name="second_date_label">Вторая дата:</string>
+    <string name="revaccination_label">Ревакцинация:</string>
+    <string name="profile_label">Профиль</string>
+    <string name="news_label">Новости</string>
+    <string name="delete_profile_image_label">Удалить фото профиля</string>
+    <string name="edit_profile_label">Редактировать профиль</string>
+    <string name="sign_out_label">Выйти из аккаунта</string>
+    <string name="delete_profile_label">Удалить аккаунт</string>
+    <string name="failed_to_save_data_label">Не удалось сохранить данные</string>
+    <string name="passwords_mismatch_label">Несовпадение паролей</string>
+    <string name="enter_first_date_label">Введите первую дату</string>
+    <string name="enter_second_date_label">Введите вторую дату</string>
+    <string name="app_name" translatable="false">Vaccination</string>
+    <string name="no_image_for_delete_label">Нет изображения для удаления</string>
+    <string name="loading">Загрузка...</string>
+    <string name="contact_support_label">Поддержка</string>
+    <string name="invalid_date_selected_label">Выбрана некорректная дата!</string>
+    <string name="failed_to_load_data">Не удалось загрузить данные!</string>
+</resources>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:orientation="vertical"
+    android:id="@+id/relative_edit_profile_activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:hint="@string/enter_name_label"
+                android:inputType="text"
+                android:maxLength="20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/sex_label"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp">
+
+                <RadioButton
+                    android:id="@+id/male_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/male_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/female_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/female_label"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:hint="@string/enter_age_label"
+                android:inputType="numberDecimal"
+                android:maxLength="2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/chronic_diseases_label"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/enabled_chronic_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/yes_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/disabled_chronic_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/no_label"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/bad_habits_label"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp">
+
+                <RadioButton
+                    android:id="@+id/enabled_bad_habits_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/yes_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/disabled_bad_habits_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/no_label"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/self_protection_label"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp">
+
+                <RadioButton
+                    android:id="@+id/always_using_measure_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/yes_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/sometimes_using_measure_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/sometimes_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/never_using_measure_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/no_label"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/vaccine_label"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/vaccine_edit_profile_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/first_vaccination_date_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/choosing_first_date_label"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/first_vaccination_date_edit_profile_button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:background="@color/purple_100"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/choose_date_label"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/second_vaccination_date_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/choosing_second_date_label"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/second_vaccination_date_edit_profile_button"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:background="@color/purple_100"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/choose_date_label"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/place_of_life_label"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp">
+
+                <RadioButton
+                    android:id="@+id/megapolis_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/metropolis_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/city_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/city_label"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/village_edit_profile_radiobutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/village_label"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:hint="@string/enter_password_label"
+                android:inputType="textPassword"
+                android:maxLength="20" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/repeat_password_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:hint="@string/confirm_password_label"
+                android:inputType="textPassword"
+                android:maxLength="20" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/accept_edit_profile_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/purple_200"
+            android:fontFamily="@font/ubuntu"
+            android:text="@string/submit_label"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
