@@ -211,7 +211,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Snackbar.make(root, R.string.enter_first_date_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.choosing_first_date_label))) {
+                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.choosing_second_date_label))) {
                     Snackbar.make(root, R.string.enter_second_date_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
@@ -251,8 +251,16 @@ public class RegistrationActivity extends AppCompatActivity {
                                     user.setMeasure(User.PROTECTIVE_MEASURES[2]);
                                 }
                                 user.setVaccine(vaccinesSpinner.getSelectedItem().toString());
-                                user.setFirst(firstDate);
-                                user.setSecond(secondDate);
+                                if (TextUtils.equals(dateOfFirstVaccinationField.getText().toString(), getString(R.string.unaviable_label))) {
+                                    user.setFirst(Date.NULL_DATE);
+                                } else {
+                                    user.setFirst(firstDate);
+                                }
+                                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.unaviable_label))) {
+                                    user.setSecond(Date.NULL_DATE);
+                                } else {
+                                    user.setSecond(secondDate);
+                                }
                                 if (megapolisRadiobutton.isChecked()) {
                                     user.setLifePlace(User.LIFE_PLACE[0]);
                                 }
@@ -314,7 +322,6 @@ public class RegistrationActivity extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year,
                               int monthOfYear, int dayOfMonth) {
             Date currentDate = new Date(ZonedDateTime.now().getDayOfMonth(), ZonedDateTime.now().getMonthValue(), ZonedDateTime.now().getYear());
-            Date minDate = new Date(User.MIN_DATE);
 
             secondDate.setDay(dayOfMonth);
             secondDate.setMonth(monthOfYear+1);

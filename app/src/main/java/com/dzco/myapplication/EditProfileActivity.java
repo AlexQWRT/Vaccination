@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.dzco.myapplication.Models.User;
 
+import java.time.ZonedDateTime;
+
 public class EditProfileActivity extends AppCompatActivity {
 
     private TextInputEditText nameField;
@@ -100,6 +102,9 @@ public class EditProfileActivity extends AppCompatActivity {
         sometimesUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.sometimes_using_measure_edit_profile_radiobutton);
         neverUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.never_using_measure_edit_profile_radiobutton);
 
+        firstDate = new Date(user.getFirst());
+        secondDate = new Date(user.getSecond());
+
         vaccinesSpinner = (Spinner) findViewById(R.id.vaccine_edit_profile_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, User.VACCINES);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -109,27 +114,39 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = (String)adapterView.getItemAtPosition(i);
                 if (TextUtils.equals(item, User.VACCINES[User.VACCINES.length - 1])) {
-                    dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.unaviable_label));
+                    dateOfFirstVaccinationField.setText(R.string.unaviable_label);
                     setDateOfFirstVaccinationButton.setEnabled(false);
                     setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
-                    dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
+                    dateOfSecondVaccinationField.setText(R.string.unaviable_label);
                     setDateOfSecondVaccinationButton.setEnabled(false);
                     setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
                     return;
                 }
                 if (TextUtils.equals(item, User.VACCINES[User.VACCINES.length - 2])) {
-                    dateOfFirstVaccinationField.setText(user.getFirst().toString());
+                    if (user.getFirst().isNull()) {
+                        dateOfFirstVaccinationField.setText(R.string.choosing_first_date_label);
+                    } else {
+                        dateOfFirstVaccinationField.setText(user.getFirst().toString());
+                    }
                     setDateOfFirstVaccinationButton.setEnabled(true);
                     setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-                    dateOfSecondVaccinationField.setText(user.getSecond().toString());
+                    if (user.getFirst().isNull()) {
+                        dateOfSecondVaccinationField.setText(R.string.choosing_second_date_label);
+                    } else {
+                        dateOfSecondVaccinationField.setText(user.getSecond().toString());
+                    }
                     setDateOfSecondVaccinationButton.setEnabled(true);
                     setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
                     return;
                 }
-                dateOfFirstVaccinationField.setText(user.getFirst().toString());
+                if (user.getFirst().isNull()) {
+                    dateOfFirstVaccinationField.setText(R.string.choosing_first_date_label);
+                } else {
+                    dateOfFirstVaccinationField.setText(user.getFirst().toString());
+                }
                 setDateOfFirstVaccinationButton.setEnabled(true);
                 setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-                dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
+                dateOfSecondVaccinationField.setText(R.string.unaviable_label);
                 setDateOfSecondVaccinationButton.setEnabled(false);
                 setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
             }
@@ -145,31 +162,30 @@ public class EditProfileActivity extends AppCompatActivity {
         setDateOfFirstVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int selectedYear = 2020;
-                int selectedMonth = 0;
-                int selectedDayOfMonth = 1;
+                int selectedYear = firstDate.getYear();
+                int selectedMonth = firstDate.getMonth() - 1;
+                int selectedDayOfMonth = firstDate.getDay();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditProfileActivity.this,
                         android.R.style.Theme_DeviceDefault_Dialog_NoActionBar,
                         firstDateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
                 datePickerDialog.show();
             }
         });
-        firstDate = new Date(user.getFirst());
+
         dateOfSecondVaccinationField = (TextView) findViewById(R.id.second_vaccination_date_edit_profile_field);
         setDateOfSecondVaccinationButton = (Button) findViewById(R.id.second_vaccination_date_edit_profile_button);
         setDateOfSecondVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int selectedYear = 2020;
-                int selectedMonth = 0;
-                int selectedDayOfMonth = 1;
+                int selectedYear = secondDate.getYear();
+                int selectedMonth = secondDate.getMonth() - 1;
+                int selectedDayOfMonth = secondDate.getDay();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(EditProfileActivity.this,
                         android.R.style.Theme_DeviceDefault_Dialog_NoActionBar,
                         secondDateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
                 datePickerDialog.show();
             }
         });
-        secondDate = new Date(user.getSecond());
 
         megapolisRadiobutton = (RadioButton) findViewById(R.id.megapolis_edit_profile_radiobutton);
         cityRadiobutton = (RadioButton) findViewById(R.id.city_edit_profile_radiobutton);
@@ -199,24 +215,36 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         vaccinesSpinner.setSelection(user.getVaccineIndex());
         if (TextUtils.equals(user.getVaccine(), User.VACCINES[User.VACCINES.length - 1])) {
-            dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.unaviable_label));
+            dateOfFirstVaccinationField.setText(R.string.unaviable_label);
             setDateOfFirstVaccinationButton.setEnabled(false);
             setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
-            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
+            dateOfSecondVaccinationField.setText(R.string.unaviable_label);
             setDateOfSecondVaccinationButton.setEnabled(false);
             setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
         } else if (TextUtils.equals(user.getVaccine(), User.VACCINES[User.VACCINES.length - 2])) {
-            dateOfFirstVaccinationField.setText(user.getFirst().toString());
+            if (user.getFirst().isNull()) {
+                dateOfFirstVaccinationField.setText(R.string.choosing_first_date_label);
+            } else {
+                dateOfFirstVaccinationField.setText(user.getFirst().toString());
+            }
             setDateOfFirstVaccinationButton.setEnabled(true);
             setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-            dateOfSecondVaccinationField.setText(user.getSecond().toString());
+            if (user.getFirst().isNull()) {
+                dateOfSecondVaccinationField.setText(R.string.choosing_second_date_label);
+            } else {
+                dateOfSecondVaccinationField.setText(user.getSecond().toString());
+            }
             setDateOfSecondVaccinationButton.setEnabled(true);
             setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
         } else {
-            dateOfFirstVaccinationField.setText(user.getFirst().toString());
+            if (user.getFirst().isNull()) {
+                dateOfFirstVaccinationField.setText(R.string.choosing_first_date_label);
+            } else {
+                dateOfFirstVaccinationField.setText(user.getFirst().toString());
+            }
             setDateOfFirstVaccinationButton.setEnabled(true);
             setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
+            dateOfSecondVaccinationField.setText(R.string.unaviable_label);
             setDateOfSecondVaccinationButton.setEnabled(false);
             setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
         }
@@ -238,13 +266,20 @@ public class EditProfileActivity extends AppCompatActivity {
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //что роизойдёт при нажатии на кнопку "Подтвердить"
                 if (TextUtils.isEmpty(nameField.getText().toString())) {
                     Snackbar.make(root, R.string.enter_name_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(ageField.getText().toString())) {
                     Snackbar.make(root, R.string.enter_age_label, Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.equals(dateOfFirstVaccinationField.getText().toString(), getString(R.string.choosing_first_date_label))) {
+                    Snackbar.make(root, R.string.enter_first_date_label, Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.choosing_second_date_label))) {
+                    Snackbar.make(root, R.string.enter_second_date_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 if (passwordField.getText().toString().length() < 8) {
@@ -259,7 +294,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 progress.show();
 
                 user.setName(nameField.getText().toString());
-
                 user.setAge(Integer.parseInt(ageField.getText().toString()));
                 user.setSex(maleRadiobutton.isChecked());
                 user.setChronicDiseases(enableChronicRadiobutton.isChecked());
@@ -274,8 +308,16 @@ public class EditProfileActivity extends AppCompatActivity {
                     user.setMeasure(User.PROTECTIVE_MEASURES[2]);
                 }
                 user.setVaccine(vaccinesSpinner.getSelectedItem().toString());
-                user.setFirst(firstDate);
-                user.setSecond(secondDate);
+                if (TextUtils.equals(dateOfFirstVaccinationField.getText().toString(), getString(R.string.unaviable_label))) {
+                    user.setFirst(Date.NULL_DATE);
+                } else {
+                    user.setFirst(firstDate);
+                }
+                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.unaviable_label))) {
+                    user.setSecond(Date.NULL_DATE);
+                } else {
+                    user.setSecond(secondDate);
+                }
                 if (megapolisRadiobutton.isChecked()) {
                     user.setLifePlace(User.LIFE_PLACE[0]);
                 }
@@ -310,9 +352,16 @@ public class EditProfileActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year,
                               int monthOfYear, int dayOfMonth) {
+            Date currentDate = new Date(ZonedDateTime.now().getDayOfMonth(), ZonedDateTime.now().getMonthValue(), ZonedDateTime.now().getYear());
+            Date minDate = new Date(User.MIN_DATE);
+
             firstDate.setDay(dayOfMonth);
             firstDate.setMonth(monthOfYear+1);
             firstDate.setYear(year);
+            if (firstDate.isSmallerThan(minDate) || firstDate.isBiggerThan(currentDate)) {
+                firstDate.setCurrent();
+                Snackbar.make(root, R.string.invalid_date_selected_label, Snackbar.LENGTH_SHORT).show();
+            }
             dateOfFirstVaccinationField.setText(firstDate.toString());
         }
     };
@@ -321,9 +370,15 @@ public class EditProfileActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year,
                               int monthOfYear, int dayOfMonth) {
+            Date currentDate = new Date(ZonedDateTime.now().getDayOfMonth(), ZonedDateTime.now().getMonthValue(), ZonedDateTime.now().getYear());
+
             secondDate.setDay(dayOfMonth);
             secondDate.setMonth(monthOfYear+1);
             secondDate.setYear(year);
+            if (secondDate.isSmallerThan(firstDate) || secondDate.isBiggerThan(currentDate)) {
+                secondDate.setCurrent();
+                Snackbar.make(root, R.string.invalid_date_selected_label, Snackbar.LENGTH_SHORT).show();
+            }
             dateOfSecondVaccinationField.setText(secondDate.toString());
         }
     };

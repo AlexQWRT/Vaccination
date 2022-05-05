@@ -206,11 +206,21 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:id="@+id/first_vaccination_date_edit_profile_field"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/first_date_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/first_vaccination_date_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="10sp"
                 android:layout_marginRight="20sp"
                 android:fontFamily="@font/ubuntu"
                 android:text="@string/choosing_first_date_label"
@@ -219,8 +229,9 @@
             <Button
                 android:id="@+id/first_vaccination_date_edit_profile_button"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="50sp"
                 android:layout_marginLeft="20sp"
+                android:layout_marginTop="10sp"
                 android:layout_marginRight="20sp"
                 android:background="@color/purple_100"
                 android:fontFamily="@font/ubuntu"
@@ -228,11 +239,21 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/second_vaccination_date_edit_profile_field"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="20sp"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/second_date_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/second_vaccination_date_edit_profile_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="10sp"
                 android:layout_marginRight="20sp"
                 android:fontFamily="@font/ubuntu"
                 android:text="@string/choosing_second_date_label"
@@ -243,6 +264,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50sp"
                 android:layout_marginLeft="20sp"
+                android:layout_marginTop="10sp"
                 android:layout_marginRight="20sp"
                 android:background="@color/purple_100"
                 android:fontFamily="@font/ubuntu"
