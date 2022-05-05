@@ -6,7 +6,11 @@ public class Date {
     public  static final Date NULL_DATE = new Date();
     private int day, year, month;
 
-    public Date() {}
+    public Date() {
+        this.day = 0;
+        this.month = 0;
+        this.year = 0;
+    }
 
     public Date(int day, int month, int year) {
         this.day = day;
