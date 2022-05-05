@@ -109,10 +109,10 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = (String)adapterView.getItemAtPosition(i);
                 if (TextUtils.equals(item, User.VACCINES[User.VACCINES.length - 1])) {
-                    dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.blocked_label));
+                    dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.unaviable_label));
                     setDateOfFirstVaccinationButton.setEnabled(false);
                     setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
-                    dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.blocked_label));
+                    dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
                     setDateOfSecondVaccinationButton.setEnabled(false);
                     setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
                     return;
@@ -129,7 +129,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 dateOfFirstVaccinationField.setText(user.getFirst().toString());
                 setDateOfFirstVaccinationButton.setEnabled(true);
                 setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-                dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.blocked_label));
+                dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
                 setDateOfSecondVaccinationButton.setEnabled(false);
                 setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
             }
@@ -199,10 +199,10 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         vaccinesSpinner.setSelection(user.getVaccineIndex());
         if (TextUtils.equals(user.getVaccine(), User.VACCINES[User.VACCINES.length - 1])) {
-            dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.blocked_label));
+            dateOfFirstVaccinationField.setText(getString(R.string.first_date_label) + " " + getString(R.string.unaviable_label));
             setDateOfFirstVaccinationButton.setEnabled(false);
             setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
-            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.blocked_label));
+            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
             setDateOfSecondVaccinationButton.setEnabled(false);
             setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
         } else if (TextUtils.equals(user.getVaccine(), User.VACCINES[User.VACCINES.length - 2])) {
@@ -216,7 +216,7 @@ public class EditProfileActivity extends AppCompatActivity {
             dateOfFirstVaccinationField.setText(user.getFirst().toString());
             setDateOfFirstVaccinationButton.setEnabled(true);
             setDateOfFirstVaccinationButton.setBackgroundColor(getResources().getColor(R.color.purple_100));
-            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.blocked_label));
+            dateOfSecondVaccinationField.setText(getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label));
             setDateOfSecondVaccinationButton.setEnabled(false);
             setDateOfSecondVaccinationButton.setBackgroundColor(getResources().getColor(R.color.gray));
         }

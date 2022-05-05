@@ -25,7 +25,7 @@
     <string name="village_label">сельская местность</string>
     <string name="confirm_password_label">Введитн пароль (подтверждение)</string>
     <string name="submit_label">Подтвердить</string>
-    <string name="blocked_label">заблокировано</string>
+    <string name="unaviable_label">Недоступно</string>
     <string name="failed_to_login_label">Ошибка входа</string>
     <string name="age_label">Возраст:</string>
     <string name="none_label">нету</string>
@@ -43,7 +43,6 @@
     <string name="passwords_mismatch_label">Несовпадение паролей</string>
     <string name="enter_first_date_label">Введите первую дату</string>
     <string name="enter_second_date_label">Введите вторую дату</string>
-    <string name="app_name" translatable="false">Vaccination</string>
     <string name="no_image_for_delete_label">Нет изображения для удаления</string>
     <string name="loading">Загрузка...</string>
     <string name="contact_support_label">Поддержка</string>

@@ -85,6 +85,13 @@ public class DateUnitTest {
         Assert.assertEquals(false, date1.isSmallerThan(date2));
     }
 
+    @Test
+    public void isSmallerEqualTest() {
+        Date date1 = new Date(5, 5, 2021);
+        Date date2 = new Date(5, 5, 2021);
+        Assert.assertEquals(false, date1.isSmallerThan(date2));
+    }
+
     /*
     isBigger(Date date) testing
      */

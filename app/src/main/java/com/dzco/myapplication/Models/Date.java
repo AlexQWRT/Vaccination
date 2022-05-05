@@ -1,5 +1,7 @@
 package com.dzco.myapplication.Models;
 
+import java.time.ZonedDateTime;
+
 public class Date {
     public  static final Date NULL_DATE = new Date();
     private int day, year, month;
@@ -59,10 +61,10 @@ public class Date {
         if (this.year > date.year) {
             return true;
         }
-        if (this.month > date.month) {
+        if (this.year == date.year && this.month > date.month) {
             return true;
         }
-        if (this.day > date.day) {
+        if (this.year == date.year && this.month == date.month && this.day > date.day) {
             return true;
         }
         return false;
@@ -82,6 +84,12 @@ public class Date {
         } else {
             return false;
         }
+    }
+
+    public void setCurrent() {
+        this.year = ZonedDateTime.now().getYear();
+        this.month = ZonedDateTime.now().getMonthValue();
+        this.day = ZonedDateTime.now().getDayOfMonth();
     }
 
     @Override

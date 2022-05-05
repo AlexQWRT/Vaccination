@@ -26,7 +26,7 @@
     <string name="village_label">village</string>
     <string name="confirm_password_label">Enter password (confirmation)</string>
     <string name="submit_label">Submit</string>
-    <string name="blocked_label">blocked</string>
+    <string name="unaviable_label">Unaviable</string>
     <string name="failed_to_login_label">Failed to login</string>
     <string name="age_label">Age:</string>
     <string name="none_label">none</string>
