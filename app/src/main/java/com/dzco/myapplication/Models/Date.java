@@ -46,10 +46,10 @@ public class Date {
         if (this.year < date.year) {
             return true;
         }
-        if (this.month < date.month) {
+        if (this.year == date.year && this.month < date.month) {
             return true;
         }
-        if (this.day < date.day) {
+        if (this.year == date.year && this.month == date.month && this.day < date.day) {
             return true;
         }
         return false;
@@ -66,6 +66,22 @@ public class Date {
             return true;
         }
         return false;
+    }
+
+    public boolean isNull() {
+        if (this.day == NULL_DATE.day && this.month == NULL_DATE.month && this.year == NULL_DATE.year) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isMinDate() {
+        if (this.day == User.MIN_DATE.day && this.month == User.MIN_DATE.month && this.year == User.MIN_DATE.year) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
