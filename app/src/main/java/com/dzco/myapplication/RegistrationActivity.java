@@ -207,11 +207,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     Snackbar.make(root, R.string.enter_age_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.equals(dateOfFirstVaccinationField.getText().toString(), getString(R.string.first_date_label) + " " + getString(R.string.unaviable_label)) || firstDate == Date.NULL_DATE) {
+                if (TextUtils.equals(dateOfFirstVaccinationField.getText().toString(), getString(R.string.choosing_first_date_label))) {
                     Snackbar.make(root, R.string.enter_first_date_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.second_date_label) + " " + getString(R.string.unaviable_label)) || secondDate != Date.NULL_DATE) {
+                if (TextUtils.equals(dateOfSecondVaccinationField.getText().toString(), getString(R.string.choosing_first_date_label))) {
                     Snackbar.make(root, R.string.enter_second_date_label, Snackbar.LENGTH_SHORT).show();
                     return;
                 }
