@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
@@ -56,6 +57,22 @@ public class FragmentNews extends Fragment {
         webView = view.findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
 
+        WebSettings setting = webView.getSettings();
+        setting.setJavaScriptEnabled(true);
+        setting.setAllowFileAccess(true);
+        setting.setAllowFileAccessFromFileURLs(true);
+        setting.setAllowUniversalAccessFromFileURLs(true);
+        setting.setAppCacheEnabled(true);
+        setting.setDatabaseEnabled(true);
+        setting.setDomStorageEnabled(true);
+        setting.setCacheMode(WebSettings.LOAD_DEFAULT);
+        setting.setAppCachePath(webView.getContext().getCacheDir().getAbsolutePath());
+        setting.setUseWideViewPort(true);
+        setting.setLoadWithOverviewMode(true);
+        setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            setting.setAllowFileAccessFromFileURLs(true);
+        }
         final Activity activity = getActivity();
 
         webView.setWebViewClient(new WebViewClient() {
@@ -71,7 +88,10 @@ public class FragmentNews extends Fragment {
                 //onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
             }
         });
+
         webView.loadUrl("https://www.rbc.ru/story/5e2881539a794724ab627caa");
+
+
 
         return view;
     }

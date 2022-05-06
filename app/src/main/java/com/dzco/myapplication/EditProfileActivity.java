@@ -69,7 +69,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference users;
 
-    private InProgress progress;
+    private InProgress InProgress;
 
     private User user;
 
@@ -194,8 +194,6 @@ public class EditProfileActivity extends AppCompatActivity {
         passwordField = (TextInputEditText) findViewById(R.id.password_edit_profile_field);
         passwordRepeatField = (TextInputEditText) findViewById(R.id.repeat_password_edit_profile_field);
 
-        progress = new InProgress(EditProfileActivity.this);
-
         nameField.setText(user.getName());
         maleRadiobutton.setChecked(user.isSex());
         femaleRadiobutton.setChecked(!user.isSex());
@@ -291,7 +289,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     return;
                 }
 
-                progress.show();
+                InProgress.show();
 
                 user.setName(nameField.getText().toString());
                 user.setAge(Integer.parseInt(ageField.getText().toString()));
@@ -333,13 +331,13 @@ public class EditProfileActivity extends AppCompatActivity {
                 users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        progress.hide();
+                        InProgress.hide();
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        progress.hide();
+                        InProgress.hide();
                         Snackbar.make(root, R.string.failed_to_save_data_label, Snackbar.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().getCurrentUser().delete();
                     }

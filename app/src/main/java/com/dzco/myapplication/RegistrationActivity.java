@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -85,6 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
         users = db.getReference("Users"); //записываем ссылку на таблицу Users
 
         root = (RelativeLayout) findViewById(R.id.relative_registration_activity);
+        progress = new InProgress(RegistrationActivity.this);
 
         nameField = (TextInputEditText) findViewById(R.id.name_registration_field);
 
@@ -192,8 +194,6 @@ public class RegistrationActivity extends AppCompatActivity {
         passwordField = (TextInputEditText) findViewById(R.id.password_registration_field);
         passwordRepeatField = (TextInputEditText) findViewById(R.id.repeat_password_registration_field);
 
-        progress = new InProgress(RegistrationActivity.this);
-
         Button acceptButton = (Button) findViewById(R.id.accept_registration_button);
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,12 +272,14 @@ public class RegistrationActivity extends AppCompatActivity {
                                 }
                                 user.setEmail(emailField.getText().toString());
                                 user.setPassword(passwordField.getText().toString());
+                                user.setImageURI(User.DEFAULT_IMAGE);
 
                                 users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         progress.hide();
-                                        finish();
+                                        startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+                                        finishAffinity();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override

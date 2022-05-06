@@ -33,6 +33,7 @@ public class FragmentSettings extends Fragment {
     private Button editProfileButton;
     private Button deleteAccountButton;
     private User user;
+    private InProgress progress;
 
     public static FragmentSettings newInstance() {
         Bundle args = new Bundle();
@@ -52,8 +53,10 @@ public class FragmentSettings extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
         root = (RelativeLayout) view.findViewById(R.id.settings_root_fragment);
         user = new User();
+        progress = new InProgress(getActivity());
 
         deleteProfileImageButton = (Button) view.findViewById(R.id.delete_profile_image_button);
         deleteProfileImageButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +66,6 @@ public class FragmentSettings extends Fragment {
                     Snackbar.make(root, R.string.no_image_for_delete_label, Snackbar.LENGTH_LONG).show();
                     return;
                 }
-                InProgress progress = new InProgress(getActivity());
                 progress.show();
                 DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 db.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
@@ -114,7 +116,6 @@ public class FragmentSettings extends Fragment {
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InProgress progress = new InProgress(getActivity());
                 progress.show();
                 FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).removeValue()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

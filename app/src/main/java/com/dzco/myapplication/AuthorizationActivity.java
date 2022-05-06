@@ -36,7 +36,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     private RelativeLayout root;
     private FirebaseAuth auth;
     private DatabaseReference db;
-    private InProgress progressDialog;
+    private InProgress progress;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -70,7 +70,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         root = (RelativeLayout) findViewById(R.id.authoization_activity);
         auth = FirebaseAuth.getInstance(); //создаём подключение к сервису авторизации
         db = FirebaseDatabase.getInstance().getReference("Users"); //записываем ссылку на таблицу Users
-        progressDialog = new InProgress(AuthorizationActivity.this);
+        progress = new InProgress(AuthorizationActivity.this);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
@@ -101,7 +101,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                     return;
                 }
 
-                progressDialog.show();
+                progress.show();
                 auth.signInWithEmailAndPassword(emailField.getText().toString(), passwordField.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
@@ -109,7 +109,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                                 db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
                                     @Override
                                     public void onSuccess(DataSnapshot dataSnapshot) {
-                                        progressDialog.hide();
+                                        progress.hide();
                                         startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
                                         finish();
                                     }
@@ -119,7 +119,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                progressDialog.hide();
+                                progress.hide();
                                 Snackbar.make(root, R.string.failed_to_login_label, Snackbar.LENGTH_SHORT).show();
                             }
                 });

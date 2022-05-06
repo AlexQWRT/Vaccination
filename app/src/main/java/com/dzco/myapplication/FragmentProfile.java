@@ -4,7 +4,10 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -22,28 +25,29 @@ import android.widget.TextView;
 import com.dzco.myapplication.Models.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import pl.droidsonroids.gif.GifImageView;
 
 public class FragmentProfile extends Fragment {
 
     private StorageReference storageRef;
     private DatabaseReference db;
     private RelativeLayout root;
-    private ImageView accountImage;
+    private CircleImageView accountImage;
+    private GifImageView loadinAnimation;
     private TextView nameText;
     private TextView emailText;
     private TextView sexText;
@@ -53,6 +57,7 @@ public class FragmentProfile extends Fragment {
     private TextView secondDateText;
     private TextView reactivationDate;
     private User user;
+    private InProgress progress;
 
     public static FragmentProfile newInstance() {
         Bundle args = new Bundle();
@@ -74,20 +79,22 @@ public class FragmentProfile extends Fragment {
         user = new User();
 
         root = getActivity().findViewById(R.id.main_activity);
+        progress = new InProgress(getActivity());
 
         storageRef = FirebaseStorage.getInstance().getReference();
         nameText = view.findViewById(R.id.name_profile_text);
 
-        accountImage = view.findViewById(R.id.image_registration_view);
+        accountImage = view.findViewById(R.id.account_image_view);
         if (!TextUtils.equals(user.getEmail(), User.DEFAULT_EMAIL)) {
             accountImage.setOnClickListener(view1 -> {
                 Intent intentChooser = new Intent();
                 intentChooser.setType("image/*");
                 intentChooser.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intentChooser, 1);
-
             });
         }
+
+        loadinAnimation = view.findViewById(R.id.loading_animation);
 
         emailText = view.findViewById(R.id.email_profile_text);
         sexText = view.findViewById(R.id.sex_profile_text);
@@ -97,8 +104,7 @@ public class FragmentProfile extends Fragment {
         secondDateText = view.findViewById(R.id.second_date_profile_text);
         reactivationDate = view.findViewById(R.id.revactination_profile_text);
 
-
-        Picasso.get().load(user.getImageURI()).into(accountImage);
+        new DownloadImageTask(accountImage, loadinAnimation, getActivity()).execute(user.getImageURI());
         String reactivationDateString;
         nameText.setText(user.getName());
         emailText.setText(user.getEmail());
@@ -151,13 +157,28 @@ public class FragmentProfile extends Fragment {
     }
 
     private void uploadImage() {
-        InProgress progress = new InProgress(getActivity());
         progress.show();
         db = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         storageRef = FirebaseStorage.getInstance().getReference();
         Bitmap bitmap = ((BitmapDrawable) accountImage.getDrawable()).getBitmap();
+        final int requiredSize = 500;
+        int ratio = 1;
+
+        if (bitmap.getWidth() > bitmap.getHeight()) {
+            if (bitmap.getHeight() > requiredSize) {
+                ratio = bitmap.getHeight() / requiredSize;
+            }
+        } else {
+            if (bitmap.getWidth() > requiredSize) {
+                ratio = bitmap.getWidth() / requiredSize;
+            }
+        }
+        Bitmap result = Bitmap.createBitmap(bitmap.getWidth() / ratio, bitmap.getHeight() / ratio, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(result);
+        Rect rect = new Rect(0, 0, bitmap.getWidth() / ratio, bitmap.getHeight() / ratio);
+        canvas.drawBitmap(bitmap, null, rect, null);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 95, baos);
+        result.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] byteArray = baos.toByteArray();
         FirebaseStorage.getInstance().getReference().child("Images/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).delete();
         StorageReference connectToDownloadingPic = storageRef.child("Images").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
