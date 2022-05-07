@@ -1,4 +1,4 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import android.content.Intent;
 import android.os.Build;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.dzco.myapplication.Models.User;
+import com.dzco.vaccination.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -54,11 +54,11 @@ public class FragmentSettings extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        root = (RelativeLayout) view.findViewById(R.id.settings_root_fragment);
+        root = view.findViewById(R.id.settings_root_fragment);
         user = new User();
         progress = new InProgress(getActivity());
 
-        deleteProfileImageButton = (Button) view.findViewById(R.id.delete_profile_image_button);
+        deleteProfileImageButton = view.findViewById(R.id.delete_profile_image_button);
         deleteProfileImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +86,7 @@ public class FragmentSettings extends Fragment {
             }
         });
 
-        signOutButton = (Button) view.findViewById(R.id.signout_profile_button);
+        signOutButton = view.findViewById(R.id.signout_profile_button);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +96,7 @@ public class FragmentSettings extends Fragment {
             }
         });
 
-        editProfileButton = (Button) view.findViewById(R.id.edit_profile_button);
+        editProfileButton = view.findViewById(R.id.edit_profile_button);
         if (TextUtils.equals(user.getEmail(), User.DEFAULT_EMAIL)) {
             editProfileButton.setEnabled(false);
             editProfileButton.setBackgroundColor(getResources().getColor(R.color.gray));
@@ -108,7 +108,7 @@ public class FragmentSettings extends Fragment {
             }
         });
 
-        deleteAccountButton = (Button) view.findViewById(R.id.delete_profile_button);
+        deleteAccountButton = view.findViewById(R.id.delete_profile_button);
         if (TextUtils.equals(user.getEmail(), User.DEFAULT_EMAIL)) {
             deleteAccountButton.setEnabled(false);
             deleteAccountButton.setBackgroundColor(getResources().getColor(R.color.gray));

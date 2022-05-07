@@ -1,4 +1,4 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.dzco.myapplication.Models.Date;
+import com.dzco.vaccination.Models.Date;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,7 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.dzco.myapplication.Models.User;
+import com.dzco.vaccination.Models.User;
 
 import java.time.ZonedDateTime;
 
@@ -85,31 +85,31 @@ public class RegistrationActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance(); //создаём подключение к БД
         users = db.getReference("Users"); //записываем ссылку на таблицу Users
 
-        root = (RelativeLayout) findViewById(R.id.relative_registration_activity);
+        root = findViewById(R.id.relative_registration_activity);
         progress = new InProgress(RegistrationActivity.this);
 
-        nameField = (TextInputEditText) findViewById(R.id.name_registration_field);
+        nameField = findViewById(R.id.name_registration_field);
 
-        maleRadiobutton = (RadioButton) findViewById(R.id.male_registration_radiobutton);
+        maleRadiobutton = findViewById(R.id.male_registration_radiobutton);
         maleRadiobutton.setChecked(true);
-        femaleRadiobutton = (RadioButton) findViewById(R.id.female_registration_radiobutton);
+        femaleRadiobutton = findViewById(R.id.female_registration_radiobutton);
 
-        ageField = (TextInputEditText) findViewById(R.id.age_registration_field);
+        ageField = findViewById(R.id.age_registration_field);
 
-        enableChronicRadiobutton = (RadioButton) findViewById(R.id.enabled_chronic_registration_radiobutton);
-        disableChronicRadiobutton = (RadioButton) findViewById(R.id.disabled_chronic_registration_radiobutton);
+        enableChronicRadiobutton = findViewById(R.id.enabled_chronic_registration_radiobutton);
+        disableChronicRadiobutton = findViewById(R.id.disabled_chronic_registration_radiobutton);
         disableChronicRadiobutton.setChecked(true);
 
-        enableBadHabitsRadiobutton = (RadioButton) findViewById(R.id.enabled_bad_habits_registration_radiobutton);
+        enableBadHabitsRadiobutton = findViewById(R.id.enabled_bad_habits_registration_radiobutton);
         enableBadHabitsRadiobutton.setChecked(true);
-        disableBadHabitsRadiobutton = (RadioButton) findViewById(R.id.disabled_bad_habits_registration_radiobutton);
+        disableBadHabitsRadiobutton = findViewById(R.id.disabled_bad_habits_registration_radiobutton);
 
-        alwaysUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.always_using_measure_registration_radiobutton);
-        sometimesUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.sometimes_using_measure_registration_radiobutton);
+        alwaysUsingMeasureRadiobutton = findViewById(R.id.always_using_measure_registration_radiobutton);
+        sometimesUsingMeasureRadiobutton = findViewById(R.id.sometimes_using_measure_registration_radiobutton);
         sometimesUsingMeasureRadiobutton.setChecked(true);
-        neverUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.never_using_measure_registration_radiobutton);
+        neverUsingMeasureRadiobutton = findViewById(R.id.never_using_measure_registration_radiobutton);
 
-        vaccinesSpinner = (Spinner) findViewById(R.id.vaccine_registration_spinner);
+        vaccinesSpinner = findViewById(R.id.vaccine_registration_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, User.VACCINES);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         vaccinesSpinner.setAdapter(adapter);
@@ -152,8 +152,8 @@ public class RegistrationActivity extends AppCompatActivity {
         firstDate = new Date();
         firstDate.setCurrent();
 
-        dateOfFirstVaccinationField = (TextView) findViewById(R.id.first_vaccination_date_registration_field);
-        setDateOfFirstVaccinationButton = (Button) findViewById(R.id.first_vaccination_date_registration_button);
+        dateOfFirstVaccinationField = findViewById(R.id.first_vaccination_date_registration_field);
+        setDateOfFirstVaccinationButton = findViewById(R.id.first_vaccination_date_registration_button);
         setDateOfFirstVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,8 +170,8 @@ public class RegistrationActivity extends AppCompatActivity {
         secondDate = new Date();
         secondDate.setCurrent();
 
-        dateOfSecondVaccinationField = (TextView) findViewById(R.id.second_vaccination_date_registration_field);
-        setDateOfSecondVaccinationButton = (Button) findViewById(R.id.second_vaccination_date_registration_button);
+        dateOfSecondVaccinationField = findViewById(R.id.second_vaccination_date_registration_field);
+        setDateOfSecondVaccinationButton = findViewById(R.id.second_vaccination_date_registration_button);
         setDateOfSecondVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,16 +185,16 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        megapolisRadiobutton = (RadioButton) findViewById(R.id.megapolis_registration_radiobutton);
-        cityRadiobutton = (RadioButton) findViewById(R.id.city_registration_radiobutton);
+        megapolisRadiobutton = findViewById(R.id.megapolis_registration_radiobutton);
+        cityRadiobutton = findViewById(R.id.city_registration_radiobutton);
         cityRadiobutton.setChecked(true);
-        villageRadiobutton = (RadioButton) findViewById(R.id.village_registration_radiobutton);
+        villageRadiobutton = findViewById(R.id.village_registration_radiobutton);
 
-        emailField = (TextInputEditText) findViewById(R.id.email_registration_field);
-        passwordField = (TextInputEditText) findViewById(R.id.password_registration_field);
-        passwordRepeatField = (TextInputEditText) findViewById(R.id.repeat_password_registration_field);
+        emailField = findViewById(R.id.email_registration_field);
+        passwordField = findViewById(R.id.password_registration_field);
+        passwordRepeatField = findViewById(R.id.repeat_password_registration_field);
 
-        Button acceptButton = (Button) findViewById(R.id.accept_registration_button);
+        Button acceptButton = findViewById(R.id.accept_registration_button);
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

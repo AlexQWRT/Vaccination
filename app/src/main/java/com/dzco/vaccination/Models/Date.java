@@ -1,4 +1,4 @@
-package com.dzco.myapplication.Models;
+package com.dzco.vaccination.Models;
 
 import java.time.ZonedDateTime;
 
@@ -55,10 +55,7 @@ public class Date {
         if (this.year == date.year && this.month < date.month) {
             return true;
         }
-        if (this.year == date.year && this.month == date.month && this.day < date.day) {
-            return true;
-        }
-        return false;
+        return this.year == date.year && this.month == date.month && this.day < date.day;
     }
 
     public boolean isBiggerThan(Date date) {
@@ -68,26 +65,15 @@ public class Date {
         if (this.year == date.year && this.month > date.month) {
             return true;
         }
-        if (this.year == date.year && this.month == date.month && this.day > date.day) {
-            return true;
-        }
-        return false;
+        return this.year == date.year && this.month == date.month && this.day > date.day;
     }
 
     public boolean isNull() {
-        if (this.day == NULL_DATE.day && this.month == NULL_DATE.month && this.year == NULL_DATE.year) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.day == NULL_DATE.day && this.month == NULL_DATE.month && this.year == NULL_DATE.year;
     }
 
     public boolean isMinDate() {
-        if (this.day == User.MIN_DATE.day && this.month == User.MIN_DATE.month && this.year == User.MIN_DATE.year) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.day == User.MIN_DATE.day && this.month == User.MIN_DATE.month && this.year == User.MIN_DATE.year;
     }
 
     public void setCurrent() {

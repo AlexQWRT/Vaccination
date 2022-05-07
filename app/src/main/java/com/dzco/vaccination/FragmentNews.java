@@ -1,4 +1,4 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

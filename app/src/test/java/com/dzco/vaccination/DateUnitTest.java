@@ -1,9 +1,9 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import org.junit.Assert;
 import org.junit.Test;
-import com.dzco.myapplication.Models.Date;
-import com.dzco.myapplication.Models.User;
+import com.dzco.vaccination.Models.Date;
+import com.dzco.vaccination.Models.User;
 
 public class DateUnitTest {
 
@@ -113,7 +113,7 @@ public class DateUnitTest {
     @Test
     public void isBiggerDayPositiveTest() {
         Date date1 = new Date(5, 5, 2021);
-        Date date2 = new Date(4, 5, 2022);
+        Date date2 = new Date(4, 5, 2021);
         Assert.assertEquals(true, date1.isBiggerThan(date2));
     }
 

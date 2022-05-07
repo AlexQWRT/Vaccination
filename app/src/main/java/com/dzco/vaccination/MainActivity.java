@@ -1,9 +1,9 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import androidx.annotation.NonNull;
 
-import com.dzco.myapplication.Models.Date;
-import com.dzco.myapplication.Models.User;
+import com.dzco.vaccination.Models.Date;
+import com.dzco.vaccination.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         progress = new InProgress(MainActivity.this);
         root = findViewById(R.id.main_activity);
         savedFragment = R.id.nav_profile;
-        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(bottomNavigationListener);
         loadProfileData = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationListener =
+    private final BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

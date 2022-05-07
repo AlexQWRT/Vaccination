@@ -1,4 +1,4 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.dzco.myapplication.Models.Date;
+import com.dzco.vaccination.Models.Date;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -24,7 +24,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.dzco.myapplication.Models.User;
+import com.dzco.vaccination.Models.User;
 
 import java.time.ZonedDateTime;
 
@@ -83,29 +83,29 @@ public class EditProfileActivity extends AppCompatActivity {
         users = db.getReference("Users"); //записываем ссылку на таблицу Users
         user = new User();
 
-        root = (RelativeLayout) findViewById(R.id.relative_edit_profile_activity);
+        root = findViewById(R.id.relative_edit_profile_activity);
 
-        nameField = (TextInputEditText) findViewById(R.id.name_edit_profile_field);
+        nameField = findViewById(R.id.name_edit_profile_field);
 
-        maleRadiobutton = (RadioButton) findViewById(R.id.male_edit_profile_radiobutton);
-        femaleRadiobutton = (RadioButton) findViewById(R.id.female_edit_profile_radiobutton);
+        maleRadiobutton = findViewById(R.id.male_edit_profile_radiobutton);
+        femaleRadiobutton = findViewById(R.id.female_edit_profile_radiobutton);
 
-        ageField = (TextInputEditText) findViewById(R.id.age_edit_profile_field);
+        ageField = findViewById(R.id.age_edit_profile_field);
 
-        enableChronicRadiobutton = (RadioButton) findViewById(R.id.enabled_chronic_edit_profile_radiobutton);
-        disableChronicRadiobutton = (RadioButton) findViewById(R.id.disabled_chronic_edit_profile_radiobutton);
+        enableChronicRadiobutton = findViewById(R.id.enabled_chronic_edit_profile_radiobutton);
+        disableChronicRadiobutton = findViewById(R.id.disabled_chronic_edit_profile_radiobutton);
 
-        enableBadHabitsRadiobutton = (RadioButton) findViewById(R.id.enabled_bad_habits_edit_profile_radiobutton);
-        disableBadHabitsRadiobutton = (RadioButton) findViewById(R.id.disabled_bad_habits_edit_profile_radiobutton);
+        enableBadHabitsRadiobutton = findViewById(R.id.enabled_bad_habits_edit_profile_radiobutton);
+        disableBadHabitsRadiobutton = findViewById(R.id.disabled_bad_habits_edit_profile_radiobutton);
 
-        alwaysUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.always_using_measure_edit_profile_radiobutton);
-        sometimesUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.sometimes_using_measure_edit_profile_radiobutton);
-        neverUsingMeasureRadiobutton = (RadioButton) findViewById(R.id.never_using_measure_edit_profile_radiobutton);
+        alwaysUsingMeasureRadiobutton = findViewById(R.id.always_using_measure_edit_profile_radiobutton);
+        sometimesUsingMeasureRadiobutton = findViewById(R.id.sometimes_using_measure_edit_profile_radiobutton);
+        neverUsingMeasureRadiobutton = findViewById(R.id.never_using_measure_edit_profile_radiobutton);
 
         firstDate = new Date(user.getFirst());
         secondDate = new Date(user.getSecond());
 
-        vaccinesSpinner = (Spinner) findViewById(R.id.vaccine_edit_profile_spinner);
+        vaccinesSpinner = findViewById(R.id.vaccine_edit_profile_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, User.VACCINES);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         vaccinesSpinner.setAdapter(adapter);
@@ -157,8 +157,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        dateOfFirstVaccinationField = (TextView) findViewById(R.id.first_vaccination_date_edit_profile_field);
-        setDateOfFirstVaccinationButton = (Button) findViewById(R.id.first_vaccination_date_edit_profile_button);
+        dateOfFirstVaccinationField = findViewById(R.id.first_vaccination_date_edit_profile_field);
+        setDateOfFirstVaccinationButton = findViewById(R.id.first_vaccination_date_edit_profile_button);
         setDateOfFirstVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,8 +172,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        dateOfSecondVaccinationField = (TextView) findViewById(R.id.second_vaccination_date_edit_profile_field);
-        setDateOfSecondVaccinationButton = (Button) findViewById(R.id.second_vaccination_date_edit_profile_button);
+        dateOfSecondVaccinationField = findViewById(R.id.second_vaccination_date_edit_profile_field);
+        setDateOfSecondVaccinationButton = findViewById(R.id.second_vaccination_date_edit_profile_button);
         setDateOfSecondVaccinationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,12 +187,12 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        megapolisRadiobutton = (RadioButton) findViewById(R.id.megapolis_edit_profile_radiobutton);
-        cityRadiobutton = (RadioButton) findViewById(R.id.city_edit_profile_radiobutton);
-        villageRadiobutton = (RadioButton) findViewById(R.id.village_edit_profile_radiobutton);
+        megapolisRadiobutton = findViewById(R.id.megapolis_edit_profile_radiobutton);
+        cityRadiobutton = findViewById(R.id.city_edit_profile_radiobutton);
+        villageRadiobutton = findViewById(R.id.village_edit_profile_radiobutton);
 
-        passwordField = (TextInputEditText) findViewById(R.id.password_edit_profile_field);
-        passwordRepeatField = (TextInputEditText) findViewById(R.id.repeat_password_edit_profile_field);
+        passwordField = findViewById(R.id.password_edit_profile_field);
+        passwordRepeatField = findViewById(R.id.repeat_password_edit_profile_field);
 
         nameField.setText(user.getName());
         maleRadiobutton.setChecked(user.isSex());
@@ -260,7 +260,7 @@ public class EditProfileActivity extends AppCompatActivity {
         passwordField.setText(user.getPassword());
         passwordRepeatField.setText(user.getPassword());
 
-        Button acceptButton = (Button) findViewById(R.id.accept_edit_profile_button);
+        Button acceptButton = findViewById(R.id.accept_edit_profile_button);
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

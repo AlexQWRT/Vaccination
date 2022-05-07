@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:408038200678:android:1a882026628a83903f64a7",
         "android_client_info": {
-          "package_name": "com.dzco.myapplication"
+          "package_name": "com.dzco.vaccination"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "408038200678-oibjbt1akoi47u1lpig8dcrvqh7ged6t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.dzco.myapplication",
+            "package_name": "com.dzco.vaccination",
             "certificate_hash": "aafd38836736d8207ac7c80fdcbdebaa29933573"
           }
         },

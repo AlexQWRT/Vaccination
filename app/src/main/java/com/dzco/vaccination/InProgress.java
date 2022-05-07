@@ -1,11 +1,11 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 
 
 public class InProgress {
-    private ProgressDialog progress;
+    private final ProgressDialog progress;
     private Context context;
 
     public InProgress(Context newContext) {

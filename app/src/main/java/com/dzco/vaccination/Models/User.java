@@ -1,4 +1,4 @@
-package com.dzco.myapplication.Models;
+package com.dzco.vaccination.Models;
 
 import android.text.TextUtils;
 

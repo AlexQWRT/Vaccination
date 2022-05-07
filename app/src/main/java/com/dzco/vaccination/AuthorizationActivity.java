@@ -1,4 +1,4 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import android.Manifest;
 import android.content.Intent;
@@ -65,9 +65,9 @@ public class AuthorizationActivity extends AppCompatActivity {
         if (internetPermissionStatus2 == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_NETWORK_STATE}, 11);
         }
-        emailField = (TextInputEditText) findViewById(R.id.email_signin_field);
-        passwordField = (TextInputEditText) findViewById(R.id.password_signin_field);
-        root = (RelativeLayout) findViewById(R.id.authoization_activity);
+        emailField = findViewById(R.id.email_signin_field);
+        passwordField = findViewById(R.id.password_signin_field);
+        root = findViewById(R.id.authoization_activity);
         auth = FirebaseAuth.getInstance(); //создаём подключение к сервису авторизации
         db = FirebaseDatabase.getInstance().getReference("Users"); //записываем ссылку на таблицу Users
         progress = new InProgress(AuthorizationActivity.this);
@@ -79,7 +79,7 @@ public class AuthorizationActivity extends AppCompatActivity {
 
 
         //кнопка регистрации
-        registrationButton = (Button) findViewById(R.id.registration_button);
+        registrationButton = findViewById(R.id.registration_button);
         registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +88,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         });
 
         //кнопка входа
-        signinButton = (Button) findViewById(R.id.signin_button);
+        signinButton = findViewById(R.id.signin_button);
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,7 +127,7 @@ public class AuthorizationActivity extends AppCompatActivity {
             }
         });
 
-        supportButton = (Button) findViewById(R.id.contact_support_button);
+        supportButton = findViewById(R.id.contact_support_button);
         supportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

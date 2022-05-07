@@ -1,6 +1,7 @@
-package com.dzco.myapplication;
+package com.dzco.vaccination;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,12 +11,12 @@ import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pl.droidsonroids.gif.GifImageView;
-import  com.dzco.myapplication.R;
+import  com.dzco.vaccination.R;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-    private CircleImageView accountImage;
-    private GifImageView loadingView;
-    private Activity activity;
+    private final CircleImageView accountImage;
+    private final GifImageView loadingView;
+    private final Activity activity;
 
     public DownloadImageTask(CircleImageView accountImage, GifImageView loadingView, Activity activity) {
         this.accountImage = accountImage;
