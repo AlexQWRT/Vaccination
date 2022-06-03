@@ -33,23 +33,6 @@ public class User {
 
     public static final String[] VACCINES = {
             "Abdala",
-            "CanSino",
-            "Covaxin",
-            "COVIranBarekat",
-            "EpiVacCorona",
-            "JohnsonJohnson",
-            "Medigen",
-            "Moderna",
-            "Novavax",
-            "OxfordAstraZeneca",
-            "BioNTech",
-            "QazVac",
-            "Sinopharm",
-            "Sinovac",
-            "Soberana02",
-            "SputnikLight",
-            "Turkovac",
-            "ZF2001",
             "SputnikV",
             "No"
     } ;
@@ -219,30 +202,30 @@ public class User {
 
     public int getAgeT()
     {
-        if(age<=9)
+        if(age > 0 && age < 10)
         {
             return 365;
         }
-        if(age > 9 && age < 39)
+        if(age >= 10 && age < 40)
         {
             return 305;
         }
-        if(age > 39 && age < 50)
+        if(age >= 40 && age < 50)
         {
             return 275;
         }
-        if(age >= 50 && age <= 59)
+        if(age >= 50 && age < 60)
         {
             return 212;
         }
-        if(age>60)
+        if(age >= 60)
         {
             return 183;
         }
         return 0;
     }
 
-    public double getPLaceKoef()
+    public double getPlaceKoef()
     {
         if(TextUtils.equals(LIFE_PLACE[1], lifePlace)) //city
         {
@@ -314,7 +297,7 @@ public class User {
 
     public int getTime()
     {
-        int t = (int) (getAgeT()*getBadHabitsKoef()*getSexKoef()*getPLaceKoef()*getDesKoef()*getMeasuresKoef());
+        int t = (int) (getAgeT()*getBadHabitsKoef()*getSexKoef()* getPlaceKoef()*getDesKoef()*getMeasuresKoef());
         if(t<MIN_VALUE)
         {
             t=MIN_VALUE;

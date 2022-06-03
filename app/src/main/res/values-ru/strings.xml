@@ -18,12 +18,12 @@
     <string name="vaccine_label">Вакцина:</string>
     <string name="choosing_first_date_label">Дата первой вакцинации</string>
     <string name="choose_date_label">Выберите дату</string>
-    <string name="choosing_second_date_label">Давтв второй вакцинации</string>
+    <string name="choosing_second_date_label">Дата второй вакцинации</string>
     <string name="place_of_life_label">Место проживания:</string>
     <string name="metropolis_label">крупный город</string>
     <string name="city_label">город</string>
     <string name="village_label">сельская местность</string>
-    <string name="confirm_password_label">Введитн пароль (подтверждение)</string>
+    <string name="confirm_password_label">Введите пароль (подтверждение)</string>
     <string name="submit_label">Подтвердить</string>
     <string name="unaviable_label">Недоступно</string>
     <string name="failed_to_login_label">Ошибка входа</string>
